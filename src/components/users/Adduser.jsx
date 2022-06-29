@@ -2,25 +2,33 @@ import React,{useState} from 'react'
 import Card from '../shared/Card';
 import Button from '../shared/Button';
 export default function Adduser() {
-  const [username,setUsername] = useState('');
-  const [age,setAge] = useState('');
+  const [enteredName,setEnteredname] = useState('');
+  const [enteredAge,setEnteredage] = useState('');
   const handleChangename = (e)=>{
-    setUsername(e.target.value);
+    setEnteredname(e.target.value);
   }
   const handleChangeage = (e)=>{
-    setAge(e.target.value);
+    setEnteredage(e.target.value);
   }
   const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log(username,age)
+    if(enteredName.trim().length === 0 || enteredAge.trim().length === 0 ){
+      return;
+    }
+    if(+enteredAge <= -1){
+      return;
+    }
+   console.log(enteredName,enteredAge)
+   setEnteredname('')
+   setEnteredage('')
   }
   return (
     <Card>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
-        <input type="text" id = "username" onChange = {handleChangename} />
+        <input type="text" id = "username" value={enteredName} onChange = {handleChangename} />
         <label htmlFor="age">Age</label>
-        <input type="number" id = "age" onChange = {handleChangeage} />
+        <input type="number" id = "age" value={enteredAge} onChange = {handleChangeage} />
         <Button type = "submit">Add User</Button>
     </form>
     </Card>
