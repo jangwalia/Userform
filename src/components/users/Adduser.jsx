@@ -15,6 +15,7 @@ export default function Adduser() {
     if(enteredName.trim().length === 0 || enteredAge.trim().length === 0 ){
       return;
     }
+    //convert age into number to check if its less than 0
     if(+enteredAge <= -1){
       return;
     }
