@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Card from '../shared/Card';
 import Button from '../shared/Button';
-export default function Adduser() {
+export default function Adduser({onAdduser}) {
   const [enteredName,setEnteredname] = useState('');
   const [enteredAge,setEnteredage] = useState('');
   const handleChangename = (e)=>{
@@ -19,7 +19,7 @@ export default function Adduser() {
     if(+enteredAge <= -1){
       return;
     }
-   console.log(enteredName,enteredAge)
+   onAdduser(enteredName,enteredAge)
    setEnteredname('')
    setEnteredage('')
   }
